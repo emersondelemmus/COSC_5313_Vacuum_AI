@@ -4,14 +4,12 @@ package main;
 
 import java.util.*;
 
-import sra.actions.*;
-import sra.sensors.*;
 
 public class Simple_Reflex_Agent
 {
 	static int steps = 0; //change to any value above 1000 to stop the program at checkSteps
 	static int dirtSucked = 19; // currently set to 19, that way if dirt is sucked goToLobby is triggered
-	static int[] loc = {0, 7}; //these are the coordinates of the top right number, change to get different location values to test goToLobby. NOTE!: loc is a 1x2 array, 0 holds the row, 1 holds the column information
+	static int[] loc = {7, 0}; //these are the coordinates of the top right number, change to get different location values to test goToLobby. NOTE!: loc is a 1x2 array, 0 holds the row, 1 holds the column information
 	//int[] loc = {7, 0}; these are the coordinates of the lobby
 
 	public static void main(String[] args)
@@ -22,8 +20,11 @@ public class Simple_Reflex_Agent
 		printBoard(board); // Print Board 1st time
                 printDirtLocation(board); // Print Dirt Location
                 
+                actions.Simple_Reflex_Agent_Actions(board); // Syntax is class["actions"].methodName["Simple_Reflex_Agent_Actions"](Parameter)
+                                                            // this calls a random action for the AI to make. 100% works
                 
-   		dirtSuck(loc, board); //determines if there is dirt in the location set in loc above, if present sucks it up
+                
+   	/*	dirtSuck(loc, board); //determines if there is dirt in the location set in loc above, if present sucks it up
 
    		if((dirtSucked == 20) && (!checkSteps(steps))) //checks if it sucked up dirt 20 times, if true and number of steps is below 1000 it goes to the lobby.
 		   		//should probably change this to see if its above 984 steps to allow goToLobby to finish
@@ -32,7 +33,7 @@ public class Simple_Reflex_Agent
 		}
 
    		System.out.println("The Agent's score is: " + performance(loc)); //takes care of the score at the end
-   		System.out.println();
+   	*/	System.out.println();
                 
                 printBoard(board);
 	}
@@ -87,14 +88,14 @@ public class Simple_Reflex_Agent
         }
 
         
-	public static int[] goToLobby(int[] loc)
+/*	public static int[] goToLobby(int[] loc)
 	{
 		int locX = loc[0]; //copies current row
 		int locY = loc[1]; //copies current column
 
 		System.out.println("The Agent is going to the lobby from row " + locX + " and column " + locY); //tells you where the agent currently is (see loc in the global variables, should match)
 
-		if(!inLobby(loc)) //checks to see if the agent is in the lobby or not
+		if(!isLobby(loc)) //checks to see if the agent is in the lobby or not
 			for(int i = locX; i < 7; i++) //sets row number to current row, increases until it hits the bottom row, 7
 			{
 				locX++; //increases the row its on
@@ -114,7 +115,7 @@ public class Simple_Reflex_Agent
 		loc[1] = locY; //modifies the column its on to return
 		return loc;
 	}
-
+*/
 	public static boolean checkSteps(int steps)
 	{
 		if(steps >= 1000) //check step count to find out if its equal or over 1000
@@ -154,7 +155,7 @@ public class Simple_Reflex_Agent
 		int score = 0; //start score off at 0
 		score = dirtSucked * 100 - steps * 10; //gain 100 for sucking dirt, lost 10 per step taken
 
-		if(inLobby(loc) == false) //determines if the agent is in the lobby for score purposes
+		if(isLobby(loc) == false) //determines if the agent is in the lobby for score purposes
 		{
 			score = score - 1000; //oof, not in the lobby. RIP score
 			System.out.println("The Agent is not in lobby");
@@ -167,7 +168,7 @@ public class Simple_Reflex_Agent
 		return score;
 	}
 
-	public static boolean inLobby(int[] loc)
+	public static boolean isLobby(int[] loc)
 	{
 		int[] lobby = {7, 0}; //hardcoded lobby location
 		if(Arrays.equals(loc, lobby)) //checks to see if the coordinate pairs match up. Array location 0 holds row information, array location 1 holds column information

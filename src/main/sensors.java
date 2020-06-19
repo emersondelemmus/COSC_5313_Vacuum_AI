@@ -1,4 +1,4 @@
-package sra.sensors;
+package main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,7 +16,17 @@ public class sensors {
         seesDirt(): tells whether or not the current square is dirty.
         isLobby(): tells whether or not the current square is the lobby square.
     */
-    public static void sensors()
+    public static void bumped()
+    {
+        
+    }
+    
+    public static void seesDirt()
+    {
+        
+    }
+    
+    public static void isLobby()
     {
         
     }
