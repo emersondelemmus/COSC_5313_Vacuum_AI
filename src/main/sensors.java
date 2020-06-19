@@ -8,7 +8,7 @@ package main;
 import main.*;
 /**
  *
- * @author Emerson
+ * @author Emerson de Lemmus, 
  */
 public class sensors {
     

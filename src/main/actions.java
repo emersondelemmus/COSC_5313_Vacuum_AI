@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.Random;
 /**
  *
- * @author Emerson
+ * @author Emerson de Lemmus, 
  */
 
 
@@ -48,32 +48,32 @@ public class actions
     
     public static int[][] goUp(int[][] board)
     {   
-        System.out.println("go up");
+        System.out.println("**TEST** Action Called: go up");
         return board;
     }
     
     public static int[][] goDown(int[][] board)
     {   
-        System.out.println("go down");
+        System.out.println("**TEST** Action Called: go down");
         return board;
     }
     
     public static int[][] moveLeft(int[][] board)
     {   
-        System.out.println("move left");
+        System.out.println("**TEST** Action Called: move left");
         return board;
 
     }
     
     public static int[][] moveRight(int[][] board)
     {   
-        System.out.println("move right");
+        System.out.println("**TEST** Action Called: move right");
         return board;
     }
     
     public static int[][] suck(int[][] board)
     {   
-        System.out.println("succ");
+        System.out.println("**TEST** Action Called: succ");
         return board;
 
     }
@@ -81,7 +81,7 @@ public class actions
     public static void shutOff()
     {   
         
-        System.out.println("shutOff(); has been called"
+        System.out.println("shutOff(); has been called "
                 + "This AI has been termimated");
         System.exit(0);
         

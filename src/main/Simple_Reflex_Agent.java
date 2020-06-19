@@ -1,6 +1,6 @@
 package main;
 
-//@Author COMMIT
+//@Author Adrien
 
 import java.util.*;
 
@@ -9,7 +9,7 @@ public class Simple_Reflex_Agent
 {
 	static int steps = 0; //change to any value above 1000 to stop the program at checkSteps
 	static int dirtSucked = 19; // currently set to 19, that way if dirt is sucked goToLobby is triggered
-	static int[] loc = {7, 0}; //these are the coordinates of the top right number, change to get different location values to test goToLobby. NOTE!: loc is a 1x2 array, 0 holds the row, 1 holds the column information
+	static int[] loc = {0, 7}; //these are the coordinates of the top right number, change to get different location values to test goToLobby. NOTE!: loc is a 1x2 array, 0 holds the row, 1 holds the column information
 	//int[] loc = {7, 0}; these are the coordinates of the lobby
 
 	public static void main(String[] args)
@@ -20,6 +20,7 @@ public class Simple_Reflex_Agent
 		printBoard(board); // Print Board 1st time
                 printDirtLocation(board); // Print Dirt Location
                 
+                // THIS IS A TEST
                 actions.Simple_Reflex_Agent_Actions(board); // Syntax is class["actions"].methodName["Simple_Reflex_Agent_Actions"](Parameter)
                                                             // this calls a random action for the AI to make. 100% works
                 
