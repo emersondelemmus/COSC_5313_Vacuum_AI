@@ -24,9 +24,7 @@ public class actions
         */
       
             // Randomizer (0 <-> 6) will randomly choose an action
-           int randomAction = new Random().nextInt(4);  //Hey Emerson, I removed stop and suck from here by changing the variable from a 6 to a 4.
-                                                        //I emailed Dr. An to see if they have to be here. If they do, we can add them. If not, we're essentially done. :D
-           
+           int randomAction = new Random().nextInt(4);  
            switch (randomAction)
            {
                 case 0:
