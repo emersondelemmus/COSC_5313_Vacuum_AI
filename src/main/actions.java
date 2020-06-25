@@ -5,14 +5,12 @@ import java.io.*;
 import java.util.Random;
 /**
  *
- * @author Emerson de Lemmus, 
+ * @author Adrien Fabian, Emerson de Lemmus
  */
 
 
 public class actions 
 {
-    // I REALIZED THAT THIS METHOD WON'T ACTUALLY USE THE ENTIRE BOARD TO GIVE BACK A NEW POSITION.
-    // IT JUST NEEDS THE CURRENT LOCATION COORDINATES
     public static void Simple_Reflex_Agent_Actions(int[] loc) 
     {
 

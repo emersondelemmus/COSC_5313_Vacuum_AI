@@ -1,10 +1,5 @@
 package main;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import main.*;
 import java.util.*;
 
@@ -13,7 +8,7 @@ import javax.lang.model.util.ElementScanner14;
 //import jdk.internal.agent.resources.agent;
 /**
  *
- * @author Emerson de Lemmus, 
+ * @author Adrien Fabian, Emerson de Lemmus
  */
 public class sensors {
     

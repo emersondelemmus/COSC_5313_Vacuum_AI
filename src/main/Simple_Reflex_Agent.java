@@ -1,6 +1,6 @@
 package main;
 
-//@Author Adrien Fabian
+//@Author Adrien Fabian, Emerson de Lemmus
 
 import java.util.*;
 
@@ -9,9 +9,7 @@ public class Simple_Reflex_Agent
 {
         // Global Variables
 	static int steps = 0; //change to any value above 1000 to stop the program at checkSteps
-	static int dirtSucked = 0; // currently set to 19, that way if dirt is sucked goToLobby is triggered
-	//static int[] loc = {0, 7}; //these are the coordinates of the top right number, change to get different location values to test goToLobby. 
-	//NOTE!: loc is a 1x2 array, 0 holds the row, 1 holds the column information
+	static int dirtSucked = 0; //currently set to 19, that way if dirt is sucked goToLobby is triggered
 	static int[] loc = {7, 0}; //these are the coordinates of the lobby where the Agent starts
 
 	public static void main(String[] args)
@@ -24,11 +22,12 @@ public class Simple_Reflex_Agent
 		
 		System.out.println("The Agent is in row " + (loc[0] + 1) + " and column " + (loc[1] + 1) + ", also known as the lobby");
 
-		// THIS IS A TEST
-		for(int i = 0; i < 1000; i++) //made this a for loop because it was easy, we can change this to a while loop or any other way of doing it
+		
+		for(int i = 0; i < 1500; i++) //made this a for loop because it was easy, we can change this to a while loop or any other way of doing it
 		{
-                    actions.Simple_Reflex_Agent_Actions(loc); // Syntax is class["actions"].methodName["Simple_Reflex_Agent_Actions"](Parameter)
-                                                    // this calls a random action for the AI to make. 100% works
+                    // Syntax is class["actions"].methodName["Simple_Reflex_Agent_Actions"](Parameter)
+                    // this calls a random action for the AI to make. 100% works
+                    actions.Simple_Reflex_Agent_Actions(loc); 
 			
                     steps++; 
                     System.out.println("The Agent has taken " + steps + " steps");
@@ -48,16 +47,6 @@ public class Simple_Reflex_Agent
 			}
 			checkSteps(steps, board); //checks the number of steps the Agent has taken
 		}
-                
-   		//dirtSuck(loc, board); //determines if there is dirt in the location set in loc above, if present sucks it up
-   		//if((dirtSucked >= 20) && (!checkSteps(steps))) //checks if it sucked up dirt 20 times, if true and number of steps is below 1000 it goes to the lobby.
-		//{
-		//	goToLobby(loc);
-		//}
-		   
-		//performance(loc);
-   		//System.out.println();
-        //printBoard(board);
 	}
 	
 	public static void endAgent()
@@ -65,54 +54,52 @@ public class Simple_Reflex_Agent
 		System.exit(0);
 	}
 
-    public static int[][] populate(int[][] board)
+        public static int[][] populate(int[][] board)
 	{
-         int numDirts = 0; //the starting number of dirt squares in the board, currently 0
-        Random random = new Random(); //randomly placed dirt, eh?
+            int numDirts = 0; //the starting number of dirt squares in the board, currently 0
+            Random random = new Random(); //randomly placed dirt, eh?
 
-        while(numDirts < 20) //keeps going until 20 dirts are placed
-        {
-            int x = random.nextInt(board.length); //chooses a row
-            int y = random.nextInt(board[0].length); // chooses a column
-            if(board[x][y] == 0) //checks to make sure it doesn't place dirt where there is already dirt
+            while(numDirts < 20) //keeps going until 20 dirts are placed
             {
+                int x = random.nextInt(board.length); //chooses a row
+                int y = random.nextInt(board[0].length); // chooses a column
+                if(board[x][y] == 0) //checks to make sure it doesn't place dirt where there is already dirt
+                {
                 board[x][y] = 1; //changes the value of 0 (no dirt) to 1 (dirt)
                 numDirts++; //increments the number of dirts on the board
+                }
             }
-        }
-        return board;
+            return board;
 	}
         
-    // Emerson's Additions: created a method to print out the board
-    public static void printBoard(int[][] board) 
-    {
-        for(int i = 0; i < board.length; i++) 
+        public static void printBoard(int[][] board) 
         {
-            for(int j = 0; j < board[i].length; j++)
+            for(int i = 0; i < board.length; i++) 
             {
+                for(int j = 0; j < board[i].length; j++)
+                {
                 System.out.printf("%5d ", board[i][j]);
+                }
+                System.out.println();
+            }
+                System.out.println();
+        }
+        
+        public static void printDirtLocation(int[][] board)
+        {
+            for(int i = 0; i < board.length; i++) 
+            {
+                for(int j = 0; j < board[i].length; j++)   
+                {
+                    if (board[i][j] == 1)
+                    {
+                        // Had to incrememt i,j by 1 because humans count from ONE not ZERO
+                        System.out.println("There is dirt at coordinates [" + (i + 1) + "," + (j + 1) + "]");
+                    }
+                }
             }
             System.out.println();
         }
-        System.out.println();
-    }
-        
-    //Emerson's Addition: created a method to print out the location of dirt at the start 
-    public static void printDirtLocation(int[][] board)
-    {
-        for(int i = 0; i < board.length; i++) 
-        {
-            for(int j = 0; j < board[i].length; j++)   
-            {
-                if (board[i][j] == 1)
-                {
-                    // Had to incrememt i,j by 1 because humans count from ONE not ZERO
-                    System.out.println("There is Dirt at coordinates [" + (i + 1) + "," + (j + 1) + "]");
-                }
-            }
-        }
-        System.out.println();
-    }
         
 	public static int[] goToLobby(int[] loc)
 	{
@@ -185,7 +172,7 @@ public class Simple_Reflex_Agent
 		if(sensors.isLobby(loc) == false) //determines if the agent is in the lobby for score purposes
 		{
 			score = score - 1000; //deducts points for not being in the lobby
-			System.out.println("The Agent is not in lobby; The Agent loses 1000 points");
+			System.out.println("The Agent is not in lobby; the Agent loses 1000 points");
                         System.out.println();
                         
                         printBoard(board);
@@ -197,7 +184,7 @@ public class Simple_Reflex_Agent
                                 if (board[i][j] == 1)
                                 {
                                     System.out.println("There is remaining dirt at coordinates [" + (i + 1) + "," + (j + 1) + "]");
-                                    System.out.println();
+                                   
                                 }
                             }
                         }       
@@ -206,7 +193,7 @@ public class Simple_Reflex_Agent
 		{
 			System.out.println("The Agent is in the lobby");
 		}
-
+                System.out.println();
 		System.out.println("The Agent's score is: " + score); //takes care of the score at the end
 		System.out.println("The Agent earned " + dirtScore + " points for successfully sucking " + dirtSucked + " dirt and lost " + stepScore + " points for taking " + steps + " steps");
 	}
