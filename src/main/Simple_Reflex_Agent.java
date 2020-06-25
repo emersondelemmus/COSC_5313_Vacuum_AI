@@ -193,6 +193,10 @@ public class Simple_Reflex_Agent
 		{
 			System.out.println("The Agent is in the lobby");
 		}
+                if(dirtSucked == 20)
+		{
+			System.out.println("The board is clean");
+		}
                 System.out.println();
 		System.out.println("The Agent's score is: " + score); //takes care of the score at the end
 		System.out.println("The Agent earned " + dirtScore + " points for successfully sucking " + dirtSucked + " dirt and lost " + stepScore + " points for taking " + steps + " steps");
